@@ -2,7 +2,7 @@
 
 namespace BulkyBookWeb.Models
 {
-    public class Categorycs
+    public class Category
     {
         #region Properties
         [Key]
