@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Bulky.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class AddCategoryToDatabase : Migration
+    public partial class AddCategoryToDbAndSeedTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,13 +19,23 @@ namespace Bulky.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DisplayOrder = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
                     CreateDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "CreateDateTime", "DisplayOrder", "Name" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 4, 13, 20, 3, 45, 140, DateTimeKind.Local).AddTicks(9158), 1, "Action" },
+                    { 2, new DateTime(2023, 4, 13, 20, 3, 45, 140, DateTimeKind.Local).AddTicks(9185), 2, "Sci-Fi" },
+                    { 3, new DateTime(2023, 4, 13, 20, 3, 45, 140, DateTimeKind.Local).AddTicks(9187), 3, "History" }
                 });
         }
 

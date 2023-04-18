@@ -22,7 +22,7 @@ namespace Bulky.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BulkyBookWeb.Models.Category", b =>
+            modelBuilder.Entity("Bulky.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,7 +38,8 @@ namespace Bulky.DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
@@ -48,21 +49,21 @@ namespace Bulky.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDateTime = new DateTime(2023, 4, 6, 19, 49, 14, 48, DateTimeKind.Local).AddTicks(792),
+                            CreateDateTime = new DateTime(2023, 4, 13, 20, 3, 45, 140, DateTimeKind.Local).AddTicks(9158),
                             DisplayOrder = 1,
                             Name = "Action"
                         },
                         new
                         {
                             Id = 2,
-                            CreateDateTime = new DateTime(2023, 4, 6, 19, 49, 14, 48, DateTimeKind.Local).AddTicks(821),
+                            CreateDateTime = new DateTime(2023, 4, 13, 20, 3, 45, 140, DateTimeKind.Local).AddTicks(9185),
                             DisplayOrder = 2,
                             Name = "Sci-Fi"
                         },
                         new
                         {
                             Id = 3,
-                            CreateDateTime = new DateTime(2023, 4, 6, 19, 49, 14, 48, DateTimeKind.Local).AddTicks(823),
+                            CreateDateTime = new DateTime(2023, 4, 13, 20, 3, 45, 140, DateTimeKind.Local).AddTicks(9187),
                             DisplayOrder = 3,
                             Name = "History"
                         });
